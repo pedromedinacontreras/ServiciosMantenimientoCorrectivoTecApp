@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_check_mantenimientos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.usuario.serviciosmantenimientotecapp.CheckMantenimientos">
+
+    <android.support.v7.widget.Toolbar
+    app:titleTextColor="@color/whiteColor"
+    android:id="@+id/toolbar_check_mantenimientos"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    app:title="Mantenimientos solicitados"
+    app:navigationIcon="@drawable/ic_arrow_back">
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        app:tabIndicatorColor="@color/whiteColor"
+        app:tabTextColor="@color/tab_blanco_opaco"
+        app:tabSelectedTextColor="@color/whiteColor"
+        app:tabMaxWidth="0dp"
+        app:tabGravity="fill"
+        app:tabTextAppearance="@style/TabLayoutTextAppearance"
+        app:tabMode="fixed">
+        <android.support.design.widget.TabItem
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Recursos materiales" />
+        <android.support.design.widget.TabItem
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Centro de cómputo"/>
+        <android.support.design.widget.TabItem
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Mantenimiento"/>
+    </android.support.design.widget.TabLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v4.view.ViewPager>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            app:backgroundTint="@color/colorPrimary"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:borderWidth="0dp"
+            app:srcCompat="@drawable/ic_add_white_36px" />
+    </FrameLayout>
+    </LinearLayout>

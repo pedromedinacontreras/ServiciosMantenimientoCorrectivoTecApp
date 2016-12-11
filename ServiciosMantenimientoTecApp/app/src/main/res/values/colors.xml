@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#6A1B9A</color>
+    <color name="colorPrimaryDark">#4A148C</color>
+    <color name="colorAccent">#E1BEE7</color>
+
+    //colores basicos
+    <color name="whiteColor">#FFFFFF</color>
+    <color name="blackColor">#000</color>
+    <color name="background_detalle_product">#E2E2E2</color>
+    <color name="lightGray">#E2E2E2</color>
+    <color name="yellow">#ffdd00</color>
+    <color name="lightWhite">#88FFFFFF</color>
+
+    <color name="unselectedRazon">#494747</color>
+    <color name="SelectedRazon">#8a000000</color>
+    <color name="titleRazon">#f54a4a4a</color>
+
+    <color name="tab_unselected">#99ffffff</color>
+    <color name="drawer_title">#4a4a4a</color>
+    <color name="drawer_info">#6d7274</color>
+    <color name="menus">#8a000000</color>
+
+    <color name="valedinero_color">#8bdc64</color>
+    <color name="creditienda_color_bajo">#80455cc7</color>
+    <color name="creditienda_color">#455cc7</color>
+    <color name="tiempoaire_color">#ba80d0</color>
+    <color name="seguros_color">#57c8e7</color>
+    <color name="tab_blanco_opaco">#80ffffff</color>
+
+    <color name="valor0">#6A1B9A</color>
+    <color name="valor1">#6A1B9A</color>
+    <color name="valor2">#4CAF50</color>
+    <color name="valor3">#4CAF50</color>
+    <color name="valor5">#D50000</color>
 </resources>
