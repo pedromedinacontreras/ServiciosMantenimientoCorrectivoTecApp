@@ -60,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btnEntrar.setEnabled(false);
                 usuario = edtUsuario.getText().toString();
                 checkLogIn(usuario, edtContraseña.getText().toString());
             }
@@ -83,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (!respuesta.isRespuesta()) {
                     Log.e("checkLogIn", "Fail");
                     Toast.makeText(LoginActivity.this,"Usuario y/o contraseña incorrecto(s)",Toast.LENGTH_SHORT).show();
+                    btnEntrar.setEnabled(true);
                 }
             }
 
@@ -250,6 +252,7 @@ public class LoginActivity extends AppCompatActivity {
                 intent.putExtra("array3", mantenimiento);
                 intent.putExtra("token",token);
                 intent.putExtra("departamentoSolicita", departamentoSolicita);
+                btnEntrar.setEnabled(true);
                 startActivity(intent);
             }
 
@@ -271,7 +274,13 @@ public class LoginActivity extends AppCompatActivity {
                         dialogInterface.dismiss();
                     }
                 });
+        btnEntrar.setEnabled(true);
         return builder.create();
     }
 
+    @Override
+    public void onResume() {
+        btnEntrar.setEnabled(true);
+        super.onResume();
+    }
 }
