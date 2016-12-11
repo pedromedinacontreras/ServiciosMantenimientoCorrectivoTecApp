@@ -38,12 +38,15 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText edtUsuario;
-    EditText edtContraseña;
-    Button btnEntrar;
+    private EditText edtUsuario;
+    private EditText edtContraseña;
+    private Button btnEntrar;
     private ArrayList<Servicio> recursosMateriales;
     private ArrayList<Servicio> centroComputo;
     private ArrayList<Servicio> mantenimiento;
+    private String token;
+    private String usuario;
+    private String departamentoSolicita;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,8 @@ public class LoginActivity extends AppCompatActivity {
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkLogIn(edtUsuario.getText().toString(), edtContraseña.getText().toString());
+                usuario = edtUsuario.getText().toString();
+                checkLogIn(usuario, edtContraseña.getText().toString());
             }
         });
     }
@@ -71,7 +75,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(retrofit2.Call<Respuesta> call, Response<Respuesta> response) {
                 Respuesta respuesta = response.body();
-                Toast.makeText(LoginActivity.this,"Solicitud correcta",Toast.LENGTH_SHORT).show();
+                token = respuesta.getUsuariovalida();
+                departamentoSolicita = respuesta.getDeptosolicita();
                 if(respuesta.isRespuesta()) {
                     Log.e("checkLogIn", "Good");
                     loadMantenimientosRecursosMateriales();
@@ -94,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create()).build();
         Api api = retrofit.create(Api.class);
-        retrofit2.Call<JsonArray> callResponse = api.getRespuestaDepartamentos("industrial","b4U9KwSlI9HNY",406,419);
+        retrofit2.Call<JsonArray> callResponse = api.getRespuestaDepartamentos(usuario,token, Integer.valueOf(departamentoSolicita),419);
         callResponse.enqueue(new Callback<JsonArray>() {
             @Override
             public void onResponse(retrofit2.Call<JsonArray> call, Response<JsonArray> response) {
@@ -147,7 +152,7 @@ public class LoginActivity extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create()).build();
         Api api = retrofit.create(Api.class);
-        retrofit2.Call<JsonArray> callResponse = api.getRespuestaDepartamentos("industrial","b4U9KwSlI9HNY",406,420);
+        retrofit2.Call<JsonArray> callResponse = api.getRespuestaDepartamentos(usuario,token, Integer.valueOf(departamentoSolicita),420);
         callResponse.enqueue(new Callback<JsonArray>() {
             @Override
             public void onResponse(retrofit2.Call<JsonArray> call, Response<JsonArray> response) {
@@ -200,7 +205,7 @@ public class LoginActivity extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create()).build();
         Api api = retrofit.create(Api.class);
-        retrofit2.Call<JsonArray> callResponse = api.getRespuestaDepartamentos("industrial","b4U9KwSlI9HNY",406,421);
+        retrofit2.Call<JsonArray> callResponse = api.getRespuestaDepartamentos(usuario,token, Integer.valueOf(departamentoSolicita),421);
         callResponse.enqueue(new Callback<JsonArray>() {
             @Override
             public void onResponse(retrofit2.Call<JsonArray> call, Response<JsonArray> response) {
@@ -243,6 +248,8 @@ public class LoginActivity extends AppCompatActivity {
                 intent.putExtra("array1", recursosMateriales);
                 intent.putExtra("array2", centroComputo);
                 intent.putExtra("array3", mantenimiento);
+                intent.putExtra("token",token);
+                intent.putExtra("departamentoSolicita", departamentoSolicita);
                 startActivity(intent);
             }
 

@@ -57,6 +57,8 @@ public class CheckMantenimientos extends AppCompatActivity {
     public static final String RECURSOS_MATERIALES = "Departamento de Recursos Materiales";
     public static final String CENTRO_COMPUTO = "Departamento de Centro de Cómputo";
     public static final String MANTENIMIENTO = "Departamento de Mantenimiento";
+    private String departamentoSolicita;
+    private String token;
 
 
     @Override
@@ -70,6 +72,8 @@ public class CheckMantenimientos extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
+        departamentoSolicita = getIntent().getStringExtra("departamentoSolicita");
+        token = getIntent().getStringExtra("token");
         recursosMateriales = getIntent().getParcelableArrayListExtra("array1");
         centroComputo = getIntent().getParcelableArrayListExtra("array2");
         mantenimiento = getIntent().getParcelableArrayListExtra("array3");
@@ -138,7 +142,7 @@ public class CheckMantenimientos extends AppCompatActivity {
                         Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASE_URL)
                                 .addConverterFactory(GsonConverterFactory.create()).build();
                         Api api = retrofit.create(Api.class);
-                        retrofit2.Call<Respuesta> callResponse = api.solicitarMantenimiento(edtUsuario.getText().toString(),"b4U9KwSlI9HNY","406",departamento,edtDescribe.getText().toString());
+                        retrofit2.Call<Respuesta> callResponse = api.solicitarMantenimiento(edtUsuario.getText().toString(), token, departamentoSolicita,departamento,edtDescribe.getText().toString());
                         callResponse.enqueue(new Callback<Respuesta>() {
                             @Override
                             public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
