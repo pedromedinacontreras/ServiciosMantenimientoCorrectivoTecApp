@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">ServiciosMantenimientoTecApp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="departamentos">
+        <item>Departamento de Recursos Materiales</item>
+        <item>Departamento de Centro de Cómputo</item>
+        <item>Departamento de Mantenimiento</item>
+    </string-array>
+
+    <string name="prompt">Departamento de Recursos Materiales</string>
 </resources>
