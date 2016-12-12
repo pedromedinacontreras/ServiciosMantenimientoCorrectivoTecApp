@@ -36,7 +36,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import io.realm.Realm;
 import retrofit2.Call;
@@ -156,10 +160,11 @@ public class CheckMantenimientos extends AppCompatActivity {
                                     Log.e("onResponse","onResponse");
                                     dialog.dismiss();
                                     if(response.body().isRespuesta()){
+                                        String timeStamp = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
                                         Toast.makeText(CheckMantenimientos.this, "Solicitud enviada", Toast.LENGTH_SHORT).show();
                                         Servicio servicio = new Servicio();
                                         servicio.setEstatus("0");
-                                        servicio.setFecha_solicitud("");
+                                        servicio.setFecha_solicitud(timeStamp);
                                         servicio.setConsecutivo((recursosMateriales.size()+1)+"");
                                         servicio.setDescriben(edtDescribe.getText().toString());
                                         servicio.setQuien_reviso("");
