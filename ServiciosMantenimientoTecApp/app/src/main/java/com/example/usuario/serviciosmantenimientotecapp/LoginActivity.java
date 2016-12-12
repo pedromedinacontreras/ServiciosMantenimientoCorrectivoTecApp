@@ -60,9 +60,13 @@ public class LoginActivity extends AppCompatActivity {
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnEntrar.setEnabled(false);
-                usuario = edtUsuario.getText().toString();
-                checkLogIn(usuario, edtContraseña.getText().toString());
+                if(edtUsuario.getText().toString().equals("") || edtContraseña.getText().toString().equals("")){
+                    Toast.makeText(LoginActivity.this,"Campos vacíos",Toast.LENGTH_SHORT).show();
+                } else {
+                    btnEntrar.setEnabled(false);
+                    usuario = edtUsuario.getText().toString();
+                    checkLogIn(usuario, edtContraseña.getText().toString());
+                }
             }
         });
     }
