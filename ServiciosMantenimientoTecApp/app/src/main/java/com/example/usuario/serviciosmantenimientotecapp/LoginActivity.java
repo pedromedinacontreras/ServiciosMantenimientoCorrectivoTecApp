@@ -47,6 +47,9 @@ public class LoginActivity extends AppCompatActivity {
     private String token;
     private String usuario;
     private String departamentoSolicita;
+    private Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create()).build();
+    private Api api = retrofit.create(Api.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +75,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkLogIn(String nombre, String contraseña) {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create()).build();
-        Api api = retrofit.create(Api.class);
         retrofit2.Call<Respuesta> callResponse = api.checkLogIn(nombre, contraseña);
         callResponse.enqueue(new Callback<Respuesta>() {
             @Override
@@ -155,9 +155,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loadMantenimientosCentroComputo(){
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create()).build();
-        Api api = retrofit.create(Api.class);
         retrofit2.Call<JsonArray> callResponse = api.getRespuestaDepartamentos(usuario,token, Integer.valueOf(departamentoSolicita),420);
         callResponse.enqueue(new Callback<JsonArray>() {
             @Override
@@ -208,9 +205,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loadMantenimientosMantenimiento(){
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create()).build();
-        Api api = retrofit.create(Api.class);
         retrofit2.Call<JsonArray> callResponse = api.getRespuestaDepartamentos(usuario,token, Integer.valueOf(departamentoSolicita),421);
         callResponse.enqueue(new Callback<JsonArray>() {
             @Override
