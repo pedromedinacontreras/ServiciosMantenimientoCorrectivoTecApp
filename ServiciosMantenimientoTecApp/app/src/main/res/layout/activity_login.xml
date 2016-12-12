@@ -9,11 +9,20 @@
     android:background="#fff"
     tools:context="com.example.usuario.serviciosmantenimientotecapp.LoginActivity">
 
+    <android.support.v7.widget.Toolbar
+        app:titleTextColor="@color/whiteColor"
+        android:id="@+id/toolbar_check_mantenimientos"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:title="Servicios mantenimiento ITC">
+    </android.support.v7.widget.Toolbar>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
@@ -21,7 +30,7 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="0dp"
             android:layout_weight="2"
             android:src="@drawable/logo"/>

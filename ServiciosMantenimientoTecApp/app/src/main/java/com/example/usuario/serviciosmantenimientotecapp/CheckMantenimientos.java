@@ -148,8 +148,11 @@ public class CheckMantenimientos extends AppCompatActivity {
                             public void onResponse(Call<Respuesta> call, Response<Respuesta> response) {
                                 Log.e("onResponse","onResponse");
                                 dialog.dismiss();
-                                Toast.makeText(CheckMantenimientos.this, "Solicitud enviada", Toast.LENGTH_SHORT).show();
-
+                                if(response.body().isRespuesta()){
+                                    Toast.makeText(CheckMantenimientos.this, "Solicitud enviada", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(CheckMantenimientos.this, "Solicitud incorrecta", Toast.LENGTH_SHORT).show();
+                                }
                             }
 
                             @Override
